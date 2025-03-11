@@ -1,29 +1,31 @@
 import random
 
-word_list = ['apple', 'banana']
+word_list = ['apple', 'banana', 'orange']
 
-choosen_word = random.choice(word_list)
-print(choosen_word)
+chosen_word = random.choice(word_list)
+print(chosen_word)  # <-- Optional: Remove this in a real game
 
-placeholder = ""
-word_length = len(choosen_word)
-for position in range(word_length):
-    placeholder += "_"
-print(placeholder)
+correct_letters = []
+game_over = False
 
+while not game_over:
+    guess_letter = input("Guess a letter: ").lower()
 
+    display = ""
+    for letter in chosen_word:
+        if letter == guess_letter or letter in correct_letters:
+            display += letter
+        else:
+            display += "_"
 
+    # If guessed correctly, add it to correct_letters
+    if guess_letter in chosen_word:
+        correct_letters.append(guess_letter)
 
+    print("Current word:", display)
 
-guess_word = input("Guess a letter: ").lower()
-print(guess_word)
-
-display = ""
-
-for letter in choosen_word:
-    if (letter == guess_word):
-        display += letter
+    if display == chosen_word:
+        game_over = True
+        print("You win!")
     else:
-        display += "_"
-
-print(display)
+        print("Guess again!")
