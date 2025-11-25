@@ -2,7 +2,6 @@
 
 import art
 
-
 def caesar(cipher_text, shift_amount, cipher_direction):
     # deal with the case when the shift number is higher than the number of letters
     # e.g. with 26 letters, the result of a shift by 27 is the same as a shift by 1
